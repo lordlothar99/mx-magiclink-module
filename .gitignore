@@ -15,3 +15,5 @@
 !/javascriptsource/**/node_modules/
 /nativemobile/builds/
 /theme-cache
+/magiclink.mpr.bak
+/magiclink.mpr.lock
