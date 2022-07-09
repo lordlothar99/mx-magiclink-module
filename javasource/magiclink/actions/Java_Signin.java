@@ -18,8 +18,10 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.ISession;
 import com.mendix.systemwideinterfaces.core.IUser;
 import com.mendix.webui.CustomJavaAction;
+import magiclink.proxies.SignInHelper;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-public class Java_Signin extends CustomJavaAction<java.lang.Void>
+public class Java_Signin extends CustomJavaAction<IMendixObject>
 {
 	private java.lang.String username;
 	private java.lang.String UUID;
@@ -32,18 +34,21 @@ public class Java_Signin extends CustomJavaAction<java.lang.Void>
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
+	public IMendixObject executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		
 		if( !handlerStarted ) {
 			Core.addRequestHandler("signin/", new SignInHandler());
 			handlerStarted = true;
 		}
 		
+		SignInHelper helper = SignInHelper.initialize(getContext(), Core.instantiate(getContext(), SignInHelper.entityName));
+		
+		helper.setUUID(UUID);
+		
 		openUserRequests.put(UUID, Core.getUser(getContext(), this.username) );
 		
-		return null;
+		return helper.getMendixObject();
 		// END USER CODE
 	}
 
