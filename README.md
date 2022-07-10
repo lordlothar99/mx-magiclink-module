@@ -1,7 +1,10 @@
 # Magic Link module for Mendix
+
 MagicLink for auto-signin in Mendix.
 
 Magic links are URLs which allow users to sign in instantaneously, without having to provide their password. Such feature is powerful but might also present a security risk : you'll have to ensure that ONLY the right user can request a magic link, for their own account. Usually magic links are sent by email, as we can consider that it's secure enough.
+
+Magic link can be displayed as a QR code in your frontoffice thanks to this module : https://marketplace.mendix.com/link/component/2891
 
 ## Installation
 
@@ -12,9 +15,11 @@ Magic links are URLs which allow users to sign in instantaneously, without havin
 
 ## Example
 
-Example can be found in Github project : download, and run locally
+Example can be found in Github project : download, and run locally.
+You'll find the configuration of the REST endpoint and the QR code generation.
 
 ## Mendix version
+
 * 9+
 
 ## Dependencies
