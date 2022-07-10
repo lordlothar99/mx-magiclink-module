@@ -15,7 +15,7 @@ import { Big } from "big.js";
  * @param {string} uUID
  * @returns {Promise.<void>}
  */
-export async function RedirectPage(uUID) {
+export async function Redirect(uUID) {
 	// BEGIN USER CODE
 
 	var form = document.createElement('form');
