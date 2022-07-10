@@ -5,11 +5,17 @@ Magic links are URLs which allow users to sign in instantaneously, without havin
 
 ## Installation
 
-Once this module is imported in your project, you'll have to create a REST endpoint calling the microflow ``Act_AutoSignIn_redirect``, with microflow ``Act_Authenticate`` set for authentication. This REST endpoint is not provided in the module because most developers have a specific way to organize their endpoints. Just open the github project if you need an example.
+1. Import the module in your project
+2. Create a REST endpoint calling the microflow ``Act_AutoSignIn_redirect``, with microflow ``Act_Authenticate`` set for authentication. This REST endpoint is not provided in the module because most developers have a specific way to organize their endpoints. Just open the github project if you need an example.
+3. Add a way to generate a Magic link in your app, by calling ``Act_GenerateMagicLink``. ``ValidityMinutes`` attribute can be used for automatic expiry, and ``MaxUsages`` attribute allows you to restrict the number of times the Magic link is used. Empty values are allowed for both (but not recommended).
+4. Ensure old Magic links are purged using the microflow ``Act_PurgeInvalidMagicLinks`` ; a scheduled event is provided : ``ScE_PurgeInvalidMagicLinks``
 
-## Usage
+## Example
 
-Magic links
+Example can be found in Github project : download, and run locally
+
+## Mendix version
+* 9+
 
 ## Dependencies
 
