@@ -18,10 +18,8 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.ISession;
 import com.mendix.systemwideinterfaces.core.IUser;
 import com.mendix.webui.CustomJavaAction;
-import magiclink.proxies.SignInHelper;
-import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-public class Java_Signin extends CustomJavaAction<IMendixObject>
+public class Java_Signin extends CustomJavaAction<java.lang.Void>
 {
 	private java.lang.String username;
 	private java.lang.String UUID;
@@ -34,7 +32,7 @@ public class Java_Signin extends CustomJavaAction<IMendixObject>
 	}
 
 	@java.lang.Override
-	public IMendixObject executeAction() throws Exception
+	public java.lang.Void executeAction() throws Exception
 	{
 		// BEGIN USER CODE
 		if( !handlerStarted ) {
@@ -42,13 +40,9 @@ public class Java_Signin extends CustomJavaAction<IMendixObject>
 			handlerStarted = true;
 		}
 		
-		SignInHelper helper = SignInHelper.initialize(getContext(), Core.instantiate(getContext(), SignInHelper.entityName));
-		
-		helper.setUUID(UUID);
-		
 		openUserRequests.put(UUID, Core.getUser(getContext(), this.username) );
 		
-		return helper.getMendixObject();
+		return null;
 		// END USER CODE
 	}
 
@@ -62,6 +56,7 @@ public class Java_Signin extends CustomJavaAction<IMendixObject>
 	}
 
 	// BEGIN EXTRA CODE
+	// inspired by ForgotPassword module
 	
 	private static boolean handlerStarted = false;
 	private static HashMap<String, IUser> openUserRequests = new HashMap<>();
