@@ -21,7 +21,7 @@ export async function Redirect(uUID) {
 	var form = document.createElement('form');
     document.body.appendChild(form);
     form.method = 'post';
-    form.action = '/signin/';
+    form.action = '/autosignin/';
 	var input = document.createElement('input');
 		input.type = 'hidden';
 		input.name = 'uuid';

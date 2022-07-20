@@ -19,12 +19,12 @@ import com.mendix.systemwideinterfaces.core.ISession;
 import com.mendix.systemwideinterfaces.core.IUser;
 import com.mendix.webui.CustomJavaAction;
 
-public class Java_Signin extends CustomJavaAction<java.lang.Void>
+public class Java_AutoSignin extends CustomJavaAction<java.lang.Void>
 {
 	private java.lang.String username;
 	private java.lang.String UUID;
 
-	public Java_Signin(IContext context, java.lang.String username, java.lang.String UUID)
+	public Java_AutoSignin(IContext context, java.lang.String username, java.lang.String UUID)
 	{
 		super(context);
 		this.username = username;
@@ -36,7 +36,7 @@ public class Java_Signin extends CustomJavaAction<java.lang.Void>
 	{
 		// BEGIN USER CODE
 		if( !handlerStarted ) {
-			Core.addRequestHandler("signin/", new SignInHandler());
+			Core.addRequestHandler("autosignin/", new SignInHandler());
 			handlerStarted = true;
 		}
 		
@@ -52,7 +52,7 @@ public class Java_Signin extends CustomJavaAction<java.lang.Void>
 	@java.lang.Override
 	public java.lang.String toString()
 	{
-		return "Java_Signin";
+		return "Java_AutoSignin";
 	}
 
 	// BEGIN EXTRA CODE
